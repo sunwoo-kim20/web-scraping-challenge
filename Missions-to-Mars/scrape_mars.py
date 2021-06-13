@@ -55,3 +55,52 @@ def mars_scrape():
 
     # Convert dataframe to an HTML string
     mars_html_table = clean_mars_df.to_html()
+
+    ## Hemisphere scrape
+
+    # Create url strings
+    base_url = 'https://marshemispheres.com/'
+    hemi_urls = [
+        'cerberus.html',
+        'schiaparelli.html',
+        'syrtis.html',
+        'valles.html'
+        ]
+
+    # Loop through hemisphere list and scrape images and titles
+    img_urls = []
+    hemi_titles = []
+
+    for url_extension in hemi_urls:
+
+        # Visit webpage and scrape the page
+        browser.visit(base_url+url_extension)
+        html = browser.html
+        soup = bs(html, "html.parser")
+
+        # Get the image
+        downloads = soup.find('div', class_ = 'downloads')
+        img_url = downloads.find_all('a')[0]['href']
+
+        full_img_url = f"{base_url}{img_url}"
+
+        img_urls.append(full_img_url)
+
+        # Get the title
+        cover = soup.find('div', class_ = 'cover')
+        title = cover.h2.text.replace(' Enhanced', '')
+        hemi_titles.append(title)
+
+    # Close browser
+    browser.quit()
+
+    # Create list of dictionaries to hold titles and urls
+    hemi_img_urls = []
+    for i in range(len(img_urls)):
+        hemi_dict = {'title': hemi_titles[i], 'img_url': img_urls[i]}
+        hemi_img_urls.append(hemi_dict)
+
+    # Create output dictionary containing all scraped data
+    mars_output_dict = {
+        
+    }
