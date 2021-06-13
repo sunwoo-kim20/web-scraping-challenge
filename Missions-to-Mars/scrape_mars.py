@@ -7,7 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 # Scrape Function
-def mars_scrape():
+def scrape_data():
     # Set up splinter
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
