@@ -21,10 +21,11 @@ mars_info = db.mars_mission
 def home():
 
     # Find one record of data from the mongo database
-    mars_data = db.mars_info.find_one()
+    mars_data = db.mars_mission.find()
+    print(mars_data)
 
     # Return template and data
-    return render_template("index.html", mars_data=mars_data)
+    return render_template("index.html", mars_data=mars_data[0])
 
 
 # Route that will trigger the scrape function

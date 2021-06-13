@@ -37,7 +37,7 @@ def scrape_data():
     # Get the image
     space_img = soup.find('a', class_='showimg')
 
-    featured_image_url = f"{url}{space_img['href']}"
+    featured_image_url = f"{space_img_url}{space_img['href']}"
 
     ## Table Scrape
 
