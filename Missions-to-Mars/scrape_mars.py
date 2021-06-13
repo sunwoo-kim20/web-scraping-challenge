@@ -102,5 +102,11 @@ def mars_scrape():
 
     # Create output dictionary containing all scraped data
     mars_output_dict = {
-        
+        "news_title" : news_title,
+        "news_teaser" : news_teaser,
+        "featured_image_url" : featured_image_url,
+        "table_html" : mars_html_table,
+        "hemisphere_images" : hemi_img_urls
     }
+
+    return mars_output_dict
