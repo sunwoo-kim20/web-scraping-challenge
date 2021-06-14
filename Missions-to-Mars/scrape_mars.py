@@ -49,12 +49,12 @@ def scrape_data():
     mars_df = tables[0]
 
     # Reformat dataframe
-    clean_mars_df = mars_df.rename(columns= {0: 'Mars-Earth Comparisons', 1: 'Mars', 2:'Earth'})
+    clean_mars_df = mars_df.rename(columns= {0: '', 1: 'Mars', 2:'Earth'})
     clean_mars_df = clean_mars_df.drop(0, axis = 0)
-    clean_mars_df.set_index('Mars-Earth Comparisons', inplace = True)
+    clean_mars_df.set_index('', inplace = True)
 
     # Convert dataframe to an HTML string
-    mars_html_table = clean_mars_df.to_html()
+    mars_html_table = clean_mars_df.to_html(justify="left", classes="table table-striped")
 
     ## Hemisphere scrape
 
